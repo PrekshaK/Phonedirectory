@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="/Users/prekshakoirala/Documents/workspace/jarphone.jar"/>
+    <jar path="Phonejar/jarphone.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/Phonejar/jarphone.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -11,9 +11,14 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=Phonejar/src\/main\/resources"/>
         <javaElement handleIdentifier="=Phonejar/src\/main\/java"/>
+        <file path="/Phonejar/.gitignore"/>
+        <file path="/Phonejar/.project"/>
+        <folder path="/Phonejar/doc"/>
+        <file path="/Phonejar/.DS_Store"/>
         <folder path="/Phonejar/src"/>
         <folder path="/Phonejar/textfile"/>
-        <folder path="/Phonejar/doc"/>
+        <file path="/Phonejar/.classpath"/>
     </selectedElements>
 </jardesc>
