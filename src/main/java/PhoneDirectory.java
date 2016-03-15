@@ -1,69 +1,66 @@
 
-
-import java.util.Properties;
-import java.io.OutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-
-
+import java.io.*;
+import java.util.*;
 
 public class PhoneDirectory {
 	String getting;
+	String path;
+	String previous_path = "src/main/resources/phone.properties";
+	String separator;
+	HashMap<String,String> mHashMap = new HashMap<String,String>();
+	
+	public PhoneDirectory(String path, String separator){
+		this.path = path + "phone.txt";
+		System.out.println(path + "phone.txtfile");
+		this.separator = separator;
+	
+	}
+	
+	
 	
 	public void addEntry(String name, String number) throws IOException{
-		Properties prop = new Properties();
-		OutputStream output = new FileOutputStream("src/main/resources/phone.properties", true); 
+		mHashMap.put(name,number);
+		System.out.println(mHashMap.get(name));
+		write();
 
-		prop.setProperty(name, number);
-		prop.store(output, null);
-		output.close();
+	}
+	
+	public void write() throws IOException{
 		
+		File fileName= new File(path);
+		Iterator iterator = mHashMap.entrySet().iterator();
+		
+		FileWriter fileWriter  = new FileWriter(fileName);
+		BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+		while (iterator.hasNext()) {
+			HashMap.Entry pair = (HashMap.Entry)iterator.next();
+			bufferedWriter.write(pair.getKey()+ separator+pair.getValue());
+			bufferedWriter.newLine();
+		}
+		bufferedWriter.close();
+		
+	     
 	}
 
 	
 	public void changeEntry(String name, String number) throws IOException{
-		
-		Properties prop = new Properties();
-		InputStream input = new FileInputStream("src/main/resources/phone.properties");
-		prop.load(input);
-		prop.replace(name, number);
-		input.close();
-		OutputStream output = new FileOutputStream("src/main/resources/phone.properties"); 
-		prop.store(output, null);
-		output.close();
-		
-		
+
+		mHashMap.put(name, number);
+		write();
 		
 	}
 	
 	
 	public void deleteEntry(String name) throws IOException{
-		
-		Properties prop = new Properties();
-		InputStream input = new FileInputStream("src/main/resources/phone.properties");
-		prop.load(input);
-		prop.remove(name);
-		input.close();
-		OutputStream output = new FileOutputStream("src/main/resources/phone.properties"); 
-		prop.store(output, null);
-		output.close();
-		
+		mHashMap.remove(name);
+		write();
 		
 	}
 	
 	public String getNumber(String name) throws IOException{
-		
-		Properties prop = new Properties();
-		InputStream input = new FileInputStream("src/main/resources/phone.properties");
-		prop.load(input);
-		getting = prop.getProperty(name);
-		input.close();
+
+		getting=mHashMap.get(name);
 		return getting;
-		
 		
 	}
 }

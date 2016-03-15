@@ -6,9 +6,10 @@ public class myDriver {
 
 	public static void main (String[] args) throws IOException{ 
 		
-		PhoneDirectory directory = new PhoneDirectory();
+		PhoneDirectory directory = new PhoneDirectory("textfile/", "|");
 		directory.addEntry("Preksha", "5622936397");
-		//directory.addEntry("Preha", "56229");
+		directory.changeEntry("Preksha", "43534");
+		directory.addEntry("Preha", "56229");
 		directory.addEntry("P", "56229");
 		directory.addEntry("Pr", "56229");
 		directory.addEntry("Pre", "56229");
